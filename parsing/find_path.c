@@ -1,0 +1,57 @@
+// #include "../header/parsing.h"
+
+// static	char	*find_path(char *command, char *path)
+// {
+// 	char	**paths;
+// 	char	*test_path;
+// 	size_t	i;
+
+// 	if (!access(command, F_OK | X_OK))
+// 		return (ft_strdup(command));
+// 	paths = ft_split(path + 5, ':');
+// 	i = -1;
+// 	while (paths[++i])
+// 	{
+// 		test_path = ft_strjoin(paths[i], "/", 0);
+// 		test_path = ft_strjoin(test_path, command, 1);
+// 		if (!access(test_path, F_OK | X_OK))
+// 			break ;
+// 		free(test_path);
+// 		test_path = 0;
+// 	}
+// 	free_table(0, paths);
+// 	return (test_path);
+// }
+
+// static char	*valid_env(char *command, char **envp)
+// {
+// 	if (envp)
+// 	{
+// 		if (!envp[0])
+// 			check_error(-1, "env is empty");
+// 		if (command[0] == '/')
+// 			return (command);
+// 		while (!ft_strnstr(*envp, "PATH", 4))
+// 		{
+// 			envp++;
+// 			if (!*envp)
+// 				check_error(-1, "No PATH");
+// 		}
+// 		return (*envp);
+// 	}
+// 	else
+// 		check_error(-1, "No env");
+// 	return (0);
+// }
+
+// void	execute(char *command, char **envp)
+// {
+// 	char	**cmd;
+// 	char	*path;
+
+// 	cmd = ft_split(command, ' ');
+// 	path = find_path(cmd[0], valid_env(command, envp));
+// 	if (cmd && path)
+// 		execve(path, cmd, envp);
+// 	free_table(path, cmd);
+// }
